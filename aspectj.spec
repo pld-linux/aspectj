@@ -30,28 +30,28 @@ install lib/*.jar $RPM_BUILD_ROOT%{_javadatadir}
 cat <<EOF >$RPM_BUILD_ROOT%{_bindir}/ajbrowser
 #!/bin/sh
 
-[ -z "$JAVA_HOME" ] && JAVA_HOME=%{_javalibdir}
-[ -z "$ASPECTJ_HOME" ] && ASPECTJ_HOME=%{_javadatadir}
+[ -z "\$JAVA_HOME" ] && JAVA_HOME=%{_javalibdir}
+[ -z "\$ASPECTJ_HOME" ] && ASPECTJ_HOME=%{_javadatadir}
 
-java -Xmx64M org.aspectj.tools.ajbrowser.Main "$@"
+java -Xmx64M org.aspectj.tools.ajbrowser.Main "\$@"
 EOF
 
 cat <<EOF >$RPM_BUILD_ROOT%{_bindir}/ajc
 #!/bin/sh
 
-[ -z "$JAVA_HOME" ] && JAVA_HOME=%{_javalibdir}
-[ -z "$ASPECTJ_HOME" ] && ASPECTJ_HOME=%{_javadatadir}
+[ -z "\$JAVA_HOME" ] && JAVA_HOME=%{_javalibdir}
+[ -z "\$ASPECTJ_HOME" ] && ASPECTJ_HOME=%{_javadatadir}
 
-java -Xmx64M org.aspectj.tools.ajc.Main "$@"
+java -Xmx64M org.aspectj.tools.ajc.Main "\$@"
 EOF
 
 cat <<EOF >$RPM_BUILD_ROOT%{_bindir}/ajdoc
 #!/bin/sh
 
-[ -z "$JAVA_HOME" ] && JAVA_HOME=%{_javalibdir}
-[ -z "$ASPECTJ_HOME" ] && ASPECTJ_HOME=%{_javadatadir}
+[ -z "\$JAVA_HOME" ] && JAVA_HOME=%{_javalibdir}
+[ -z "\$ASPECTJ_HOME" ] && ASPECTJ_HOME=%{_javadatadir}
 
-java -Xmx64M org.aspectj.tools.ajdoc.Main "$@"
+java -Xmx64M org.aspectj.tools.ajdoc.Main "\$@"
 EOF
 
 %clean
