@@ -1,7 +1,7 @@
 Summary:	A seamless aspect-oriented extension to the Java programming language
 Name:		aspectj
 Version:	1.2
-Release:	0.2
+Release:	1
 License:	CPL v1.0
 Group:		Development/Languages
 Source0:	http://download.eclipse.org/technology/ajdt/%{name}-%{version}.jar
@@ -56,6 +56,15 @@ EOF
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post
+cat <<EOF
+
+ Rmember to add %{_javadatadir}/aspectjtools.jar to your CLASSPATH.
+ This small .jar file contains classes required by any program
+ compiled with the ajc compiler.
+
+EOF
 
 %files
 %defattr(644,root,root,755)
