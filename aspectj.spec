@@ -8,9 +8,11 @@ Source0:	http://download.eclipse.org/technology/ajdt/%{name}-%{version}.jar
 # Source0-md5:	70b3d558a510d2eb142930bd3d93eeec
 URL:		http://eclipse.org/aspectj/
 Requires:	jre >= 1.4.0
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_javalibdir	%{_datadir}/java
+%define		_javalibdir	%{_libdir}/java
+%define		_javadatadir	%{_datadir}/java
 
 %description
 
@@ -21,17 +23,15 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_javalibdir}
+install -d $RPM_BUILD_ROOT%{_javadatadir}
 
-install lib/*.jar $RPM_BUILD_ROOT%{_javalibdir}
+install lib/*.jar $RPM_BUILD_ROOT%{_javadatadir}
 
 cat <<EOF >$RPM_BUILD_ROOT%{_bindir}/ajbrowser
 #!/bin/sh
 
-if [ "$JAVA_HOME" = "" ] ; then JAVA_HOME=/usr/lib/java
-fi
-if [ "$ASPECTJ_HOME" = "" ] ; then ASPECTJ_HOME=/tmp/aspectj1.2
-fi
+[ -z "$JAVA_HOME" ] && JAVA_HOME=%{_javalibdir}
+[ -z "$ASPECTJ_HOME" ] && ASPECTJ_HOME=%{_javadatadir}
 
 java -Xmx64M org.aspectj.tools.ajbrowser.Main "$@"
 EOF
@@ -39,10 +39,8 @@ EOF
 cat <<EOF >$RPM_BUILD_ROOT%{_bindir}/ajc
 #!/bin/sh
 
-if [ "$JAVA_HOME" = "" ] ; then JAVA_HOME=/usr/lib/java
-fi
-if [ "$ASPECTJ_HOME" = "" ] ; then ASPECTJ_HOME=/tmp/aspectj1.2
-fi
+[ -z "$JAVA_HOME" ] && JAVA_HOME=%{_javalibdir}
+[ -z "$ASPECTJ_HOME" ] && ASPECTJ_HOME=%{_javadatadir}
 
 java -Xmx64M org.aspectj.tools.ajc.Main "$@"
 EOF
@@ -50,10 +48,8 @@ EOF
 cat <<EOF >$RPM_BUILD_ROOT%{_bindir}/ajdoc
 #!/bin/sh
 
-if [ "$JAVA_HOME" = "" ] ; then JAVA_HOME=/usr/lib/java
-fi
-if [ "$ASPECTJ_HOME" = "" ] ; then ASPECTJ_HOME=/tmp/aspectj1.2
-fi
+[ -z "$JAVA_HOME" ] && JAVA_HOME=%{_javalibdir}
+[ -z "$ASPECTJ_HOME" ] && ASPECTJ_HOME=%{_javadatadir}
 
 java -Xmx64M org.aspectj.tools.ajdoc.Main "$@"
 EOF
@@ -65,4 +61,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README* LICENSE* doc/*
 %attr(755,root,root) %{_bindir}/*
-%{_javalibdir}/*.jar
+%{_javadatadir}/*.jar
