@@ -1,4 +1,5 @@
 Summary:	A seamless aspect-oriented extension to the Java programming language
+Summary(pl):	Przezroczyste zorientowane aspektowo rozszerzenie dla jêzyka Java
 Name:		aspectj
 Version:	1.2
 Release:	1
@@ -15,11 +16,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_javadatadir	%{_datadir}/java
 
 %description
+A seamless aspect-oriented extension to the Java programming language.
+
+%description -l pl
+Przezroczyste zorientowane aspektowo rozszerzenie dla jêzyka Java.
 
 %prep
 %setup -qc
-
-%build
 
 %install
 rm -rf $RPM_BUILD_ROOT
