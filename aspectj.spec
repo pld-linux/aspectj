@@ -23,7 +23,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_javadatadir}
+install -d $RPM_BUILD_ROOT{%{_javadatadir},%{_bindir}}
 
 install lib/*.jar $RPM_BUILD_ROOT%{_javadatadir}
 
