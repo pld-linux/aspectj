@@ -1,7 +1,7 @@
 Summary:	A seamless aspect-oriented extension to the Java programming language
 Name:		aspectj
 Version:	1.2
-Release:	0.1
+Release:	0.2
 License:	CPL v1.0
 Group:		Development/Languages
 Source0:	http://download.eclipse.org/technology/ajdt/%{name}-%{version}.jar
@@ -33,7 +33,7 @@ cat <<EOF >$RPM_BUILD_ROOT%{_bindir}/ajbrowser
 [ -z "\$JAVA_HOME" ] && JAVA_HOME=%{_javalibdir}
 [ -z "\$ASPECTJ_HOME" ] && ASPECTJ_HOME=%{_javadatadir}
 
-java -Xmx64M org.aspectj.tools.ajbrowser.Main "\$@"
+java -classpath "\$ASPECTJ_HOME/aspectjtools.jar:\$JAVA_HOME/lib/tools.jar:\$CLASSPATH" -Xmx64M org.aspectj.tools.ajbrowser.Main "\$@"
 EOF
 
 cat <<EOF >$RPM_BUILD_ROOT%{_bindir}/ajc
@@ -42,7 +42,7 @@ cat <<EOF >$RPM_BUILD_ROOT%{_bindir}/ajc
 [ -z "\$JAVA_HOME" ] && JAVA_HOME=%{_javalibdir}
 [ -z "\$ASPECTJ_HOME" ] && ASPECTJ_HOME=%{_javadatadir}
 
-java -Xmx64M org.aspectj.tools.ajc.Main "\$@"
+java -classpath "\$ASPECTJ_HOME/aspectjtools.jar:\$JAVA_HOME/lib/tools.jar:\$CLASSPATH" -Xmx64M org.aspectj.tools.ajc.Main "\$@"
 EOF
 
 cat <<EOF >$RPM_BUILD_ROOT%{_bindir}/ajdoc
@@ -51,7 +51,7 @@ cat <<EOF >$RPM_BUILD_ROOT%{_bindir}/ajdoc
 [ -z "\$JAVA_HOME" ] && JAVA_HOME=%{_javalibdir}
 [ -z "\$ASPECTJ_HOME" ] && ASPECTJ_HOME=%{_javadatadir}
 
-java -Xmx64M org.aspectj.tools.ajdoc.Main "\$@"
+java -classpath "\$ASPECTJ_HOME/aspectjtools.jar:\$JAVA_HOME/lib/tools.jar:\$CLASSPATH" -Xmx64M org.aspectj.tools.ajdoc.Main "\$@"
 EOF
 
 %clean
