@@ -1,12 +1,12 @@
 Summary:	A seamless aspect-oriented extension to the Java programming language
 Summary(pl):	Przezroczyste zorientowane aspektowo rozszerzenie dla jêzyka Java
 Name:		aspectj
-Version:	1.2
+Version:	1.5.2a
 Release:	1
 License:	CPL v1.0
 Group:		Development/Languages
-Source0:	http://download.eclipse.org/technology/ajdt/%{name}-%{version}.jar
-# Source0-md5:	70b3d558a510d2eb142930bd3d93eeec
+Source0:	http://download.eclipse.org/tools/aspectj/%{name}-%{version}.jar
+# Source0-md5:	9a9c803f3fd169e438b9c2e6a30131f1
 URL:		http://eclipse.org/aspectj/
 Requires:	jre >= 1.4.0
 BuildArch:	noarch
