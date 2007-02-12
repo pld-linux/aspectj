@@ -1,5 +1,5 @@
 Summary:	A seamless aspect-oriented extension to the Java programming language
-Summary(pl.UTF-8):   Przezroczyste zorientowane aspektowo rozszerzenie dla języka Java
+Summary(pl.UTF-8):	Przezroczyste zorientowane aspektowo rozszerzenie dla języka Java
 Name:		aspectj
 Version:	1.5.2a
 Release:	1
